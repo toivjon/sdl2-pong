@@ -1,15 +1,17 @@
 #include "game.h"
 
+#include <SDL.h>
+
 using namespace pong;
 
 Game::Game()
 {
-  // ... TODO RAII initialize
+  SDL_Init(SDL_INIT_EVERYTHING);
 }
 
 Game::~Game()
 {
-  // ... TODO RAII cleanup
+  SDL_Quit();
 }
 
 void Game::start()

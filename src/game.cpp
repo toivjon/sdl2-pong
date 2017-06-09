@@ -4,15 +4,15 @@ using namespace pong;
 
 Game::Game()
 {
-	// ... TODO RAII initialize
+  // ... TODO RAII initialize
 }
 
 Game::~Game()
 {
-	// ... TODO RAII cleanup
+  // ... TODO RAII cleanup
 }
 
 void Game::start()
 {
-	// ... TODO
+  // ... TODO
 }

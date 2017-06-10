@@ -1,11 +1,15 @@
 #include "court_scene.h"
 #include "game.h"
+#include "wall.h"
 
 #include <SDL.h>
 
 using namespace pong;
 
-CourtScene::CourtScene(Game& game) : mGame(game)
+CourtScene::CourtScene(Game& game) 
+  : mGame(game),
+    mTopWall(0, 0, 800, 25),
+    mBottomWall(0, (600 - 25), 800, 25)
 {
 	// TODO ...
 }
@@ -17,7 +21,8 @@ CourtScene::~CourtScene()
 
 void CourtScene::onDraw(SDL_Renderer& renderer)
 {
-  // TODO ...
+  mTopWall.onDraw(renderer);
+  mBottomWall.onDraw(renderer);
 }
 
 void CourtScene::onUpdate()

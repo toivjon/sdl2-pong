@@ -1,6 +1,7 @@
 #ifndef PONG_COURT_SCENE_H
 #define PONG_COURT_SCENE_H
 
+#include "wall.h"
 #include "scene.h"
 
 namespace pong
@@ -20,6 +21,9 @@ namespace pong
     void onKeyUp(SDL_KeyboardEvent& event) override;
   private:
     Game& mGame;
+
+    Wall  mTopWall;
+    Wall  mBottomWall;
   };
 }
 

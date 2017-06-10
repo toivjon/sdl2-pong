@@ -1,4 +1,5 @@
 #include "game.h"
+#include "welcome_scene.h"
 
 #include <SDL.h>
 #include <iostream>
@@ -41,6 +42,9 @@ void Game::start()
     return;
   }
 
+  // set the initial scene for the game.
+  setScene(std::make_shared<WelcomeScene>(*this));
+
   auto isRunning = true;
   SDL_Event event;
   while (isRunning) {
@@ -51,7 +55,8 @@ void Game::start()
       }
     }
 
-    // ... TODO update game logics.
+    // update game logics on the current scene.
+    mScene->onUpdate();
 
     // clear the rendering context with the black color.
     SDL_SetRenderDrawColor(mRenderer, 0x00, 0x00, 0x00, 0xff);
@@ -60,9 +65,28 @@ void Game::start()
     // turn the renderer draw color to white.
     SDL_SetRenderDrawColor(mRenderer, 0xff, 0xff, 0xff, 0xff);
 
-    // ... TODO render stuff into the buffer.
+    // render scene stuff into the buffer.
+    mScene->onDraw();
 
     // present the rendered buffer.
     SDL_RenderPresent(mRenderer);
   }
+}
+
+void Game::setScene(ScenePtr scene)
+{
+  // skip the null scene assignment.
+  if (scene == nullptr) {
+    std::cerr << "Unable to set null as the active scene!" << std::endl;
+    return;
+  }
+
+  // tell old scene (if any) that we are going to exit from it.
+  if (mScene) {
+    mScene->onExit();
+  }
+
+  // assign and enter the new scene.
+  mScene = scene;
+  mScene->onEnter();
 }

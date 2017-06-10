@@ -8,7 +8,9 @@
 #ifndef PONG_GAME_H
 #define PONG_GAME_H
 
-// forward declarations.
+#include "scene.h"
+
+// SDL forward declarations.
 struct SDL_Window;
 struct SDL_Renderer;
 
@@ -27,9 +29,12 @@ namespace pong
     ~Game();
 		
     void start();
+
+    void setScene(ScenePtr scene);
   private:
-    SDL_Window*   mWindow;
-    SDL_Renderer* mRenderer;
+    SDL_Window*     mWindow;
+    SDL_Renderer*   mRenderer;
+    ScenePtr        mScene;
   };
 }
 

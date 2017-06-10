@@ -74,7 +74,7 @@ void Game::start()
     SDL_SetRenderDrawColor(mRenderer, 0xff, 0xff, 0xff, 0xff);
 
     // render scene stuff into the buffer.
-    mScene->onDraw();
+    mScene->onDraw(*mRenderer);
 
     // present the rendered buffer.
     SDL_RenderPresent(mRenderer);

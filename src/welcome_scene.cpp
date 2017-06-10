@@ -10,7 +10,7 @@ WelcomeScene::WelcomeScene(Game& game) : mGame(game)
 	// ...
 }
 
-void WelcomeScene::onDraw()
+void WelcomeScene::onDraw(SDL_Renderer& renderer)
 {
 	// TODO ...
 }

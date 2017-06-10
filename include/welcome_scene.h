@@ -14,7 +14,7 @@ namespace pong
 		
 		virtual ~WelcomeScene() { }
 		
-		void onDraw() override;
+		void onDraw(SDL_Renderer& renderer) override;
 		void onUpdate() override;
 		void onEnter() override;
 		void onExit() override;

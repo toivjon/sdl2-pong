@@ -10,13 +10,14 @@
 #include <memory>
 
 struct SDL_KeyboardEvent;
+struct SDL_Renderer;
 
 namespace pong
 {
 	class Scene
 	{
 	public:
-		virtual void onDraw() = 0;
+		virtual void onDraw(SDL_Renderer& renderer) = 0;
 		virtual void onUpdate() = 0;
 		virtual void onEnter() = 0;
 		virtual void onExit() = 0;

@@ -11,15 +11,15 @@
 
 namespace pong
 {
-	class Wall
-	{
-	public:
+  class Wall
+  {
+  public:
     Wall(int x, int y, int width, int height);
 
-		void onDraw(SDL_Renderer& renderer);
+    void onDraw(SDL_Renderer& renderer);
   private:
     SDL_Rect mRect;
-	};
+  };
 }
 
 #endif

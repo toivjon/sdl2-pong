@@ -57,6 +57,9 @@ void Game::start()
     SDL_SetRenderDrawColor(mRenderer, 0x00, 0x00, 0x00, 0xff);
     SDL_RenderClear(mRenderer);
 
+    // turn the renderer draw color to white.
+    SDL_SetRenderDrawColor(mRenderer, 0xff, 0xff, 0xff, 0xff);
+
     // ... TODO render stuff into the buffer.
 
     // present the rendered buffer.

@@ -13,6 +13,7 @@
 // SDL forward declarations.
 struct SDL_Window;
 struct SDL_Renderer;
+struct _TTF_Font;
 
 namespace pong
 {
@@ -34,6 +35,7 @@ namespace pong
   private:
     SDL_Window*     mWindow;
     SDL_Renderer*   mRenderer;
+    _TTF_Font*      mFont;
     ScenePtr        mScene;
   };
 }

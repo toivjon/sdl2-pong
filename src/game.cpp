@@ -2,6 +2,7 @@
 #include "welcome_scene.h"
 
 #include <SDL.h>
+#include <SDL_ttf.h>
 #include <iostream>
 
 #define ERROR -1
@@ -9,14 +10,16 @@
 
 using namespace pong;
 
-Game::Game() : mWindow(nullptr)
+Game::Game() : mWindow(nullptr), mRenderer(nullptr), mFont(nullptr)
 {
   // ...
 }
 
 Game::~Game()
 {
+  TTF_CloseFont(mFont);
   SDL_DestroyWindow(mWindow);
+  TTF_Quit();
   SDL_Quit();
 }
 
@@ -25,6 +28,12 @@ void Game::start()
   // initialize the SDL2 framework along with systems.
   if (SDL_Init(SDL_INIT_EVERYTHING) == -1) {
     std::cerr << "Unable to initialize SDL: " << SDL_GetError() << std::endl;
+    return;
+  }
+  
+  // initialize the TTF framework for the text rendering.
+  if (TTF_Init() == -1) {
+    std::cerr << "Unable to initialize TTF: " << TTF_GetError() << std::endl;
     return;
   }
 
@@ -40,6 +49,12 @@ void Game::start()
   if (mRenderer == nullptr) {
     std::cerr << "Unable to create SDL renderer: " << SDL_GetError() << std::endl;
     return;
+  }
+
+  // initialize the font we want to use within our application.
+  mFont = TTF_OpenFont("C:/Windows/Fonts/arial.ttf", 28);
+  if (mFont == nullptr) {
+    std::cerr << "Unable to load a font for the application: " << TTF_GetError() << std::endl;
   }
 
   // set the initial scene for the game.

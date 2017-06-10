@@ -10,9 +10,12 @@
 
 #include "scene.h"
 
+#include <string>
+
 // SDL forward declarations.
 struct SDL_Window;
 struct SDL_Renderer;
+struct SDL_Texture;
 struct _TTF_Font;
 
 namespace pong
@@ -32,6 +35,8 @@ namespace pong
     void start();
 
     void setScene(ScenePtr scene);
+
+    SDL_Texture* createText(const std::string& text);
   private:
     SDL_Window*     mWindow;
     SDL_Renderer*   mRenderer;

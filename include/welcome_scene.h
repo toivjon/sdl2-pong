@@ -3,6 +3,8 @@
 
 #include "scene.h"
 
+struct SDL_Texture;
+
 namespace pong
 {
 	class Game;
@@ -11,8 +13,7 @@ namespace pong
 	{
 	public:
 		WelcomeScene(Game& game);
-		
-		virtual ~WelcomeScene() { }
+    virtual ~WelcomeScene();
 		
 		void onDraw(SDL_Renderer& renderer) override;
 		void onUpdate() override;
@@ -21,7 +22,11 @@ namespace pong
 		void onKeyDown(SDL_KeyboardEvent& event) override;
 		void onKeyUp(SDL_KeyboardEvent& event) override;
 	private:
-		Game& mGame;
+		Game&        mGame;
+    SDL_Texture* mTopicTexture;
+    SDL_Texture* mLeftPlayerInstructions;
+    SDL_Texture* mRightPlayerInstructions;
+    SDL_Texture* mContinueInstructions;
 	};
 }
 

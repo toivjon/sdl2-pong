@@ -1,4 +1,5 @@
 #include "welcome_scene.h"
+#include "court_scene.h"
 #include "game.h"
 
 #include <SDL.h>
@@ -75,9 +76,10 @@ void WelcomeScene::onKeyDown(SDL_KeyboardEvent& event)
 
 void WelcomeScene::onKeyUp(SDL_KeyboardEvent& event)
 {
+  // move player into the court scene to start the match.
   switch (event.keysym.sym) {
   case SDLK_RETURN:
-    // TODO ... goto court scene when court scene exists.
+    mGame.setScene(std::make_shared<CourtScene>(mGame));
     break;
   }
 }

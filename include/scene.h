@@ -9,6 +9,8 @@
 
 #include <memory>
 
+struct SDL_KeyboardEvent;
+
 namespace pong
 {
 	class Scene
@@ -18,8 +20,8 @@ namespace pong
 		virtual void onUpdate() = 0;
 		virtual void onEnter() = 0;
 		virtual void onExit() = 0;
-		virtual void onKeyDown() = 0;
-		virtual void onKeyUp() = 0;
+		virtual void onKeyDown(SDL_KeyboardEvent& event) = 0;
+		virtual void onKeyUp(SDL_KeyboardEvent& event) = 0;
 	};
 	typedef std::shared_ptr<Scene> ScenePtr;
 }

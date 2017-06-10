@@ -5,9 +5,8 @@
 
 namespace pong
 {
-	// forward declarations.
 	class Game;
-	
+
 	class WelcomeScene : public Scene
 	{
 	public:
@@ -19,8 +18,8 @@ namespace pong
 		void onUpdate() override;
 		void onEnter() override;
 		void onExit() override;
-		void onKeyDown() override;
-		void onKeyUp() override;
+		void onKeyDown(SDL_KeyboardEvent& event) override;
+		void onKeyUp(SDL_KeyboardEvent& event) override;
 	private:
 		Game& mGame;
 	};

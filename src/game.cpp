@@ -50,8 +50,16 @@ void Game::start()
   while (isRunning) {
     // poll and handle events from the SDL framework.
     while (SDL_PollEvent(&event) != 0) {
-      if (event.type == SDL_QUIT) {
+      switch (event.type) {
+      case SDL_QUIT:
         isRunning = false;
+        break;
+      case SDL_KEYDOWN:
+        mScene->onKeyDown(event.key);
+        break;
+      case SDL_KEYUP:
+        mScene->onKeyUp(event.key);
+        break;
       }
     }
 

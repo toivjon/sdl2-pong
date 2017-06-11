@@ -1,4 +1,5 @@
 #include "game.h"
+#include "court_scene.h"
 #include "welcome_scene.h"
 
 #include <SDL.h>
@@ -58,7 +59,7 @@ void Game::start()
   }
 
   // set the initial scene for the game.
-  setScene(std::make_shared<WelcomeScene>(*this));
+  setScene(std::make_shared<CourtScene>(*this));
 
   auto isRunning = true;
   SDL_Event event;

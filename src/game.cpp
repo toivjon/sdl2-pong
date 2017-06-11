@@ -46,7 +46,7 @@ void Game::start()
   }
 
   // try to create a new renderer for the application window.
-  mRenderer = SDL_CreateRenderer(mWindow, -1, SDL_RENDERER_ACCELERATED);
+  mRenderer = SDL_CreateRenderer(mWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
   if (mRenderer == nullptr) {
     std::cerr << "Unable to create SDL renderer: " << SDL_GetError() << std::endl;
     return;

@@ -36,7 +36,8 @@ void CourtScene::onDraw(SDL_Renderer& renderer)
 
 void CourtScene::onUpdate()
 {
-  // TODO ...
+  mLeftPaddle.onUpdate();
+  mRightPaddle.onUpdate();
 }
 
 void CourtScene::onEnter()
@@ -51,10 +52,44 @@ void CourtScene::onExit()
 
 void CourtScene::onKeyDown(SDL_KeyboardEvent& event)
 {
-  // TODO ...
+  switch (event.keysym.sym) {
+  case SDLK_w:
+    mLeftPaddle.setMovement(Paddle::Movement::UP);
+    break;
+  case SDLK_s:
+    mLeftPaddle.setMovement(Paddle::Movement::DOWN);
+    break;
+  case SDLK_UP:
+    mRightPaddle.setMovement(Paddle::Movement::UP);
+    break;
+  case SDLK_DOWN:
+    mRightPaddle.setMovement(Paddle::Movement::DOWN);
+    break;
+  }
 }
 
 void CourtScene::onKeyUp(SDL_KeyboardEvent& event)
 {
-  // TODO ...
+  switch (event.keysym.sym) {
+  case SDLK_w:
+    if (mLeftPaddle.isMoving(Paddle::Movement::UP)) {
+      mLeftPaddle.setMovement(Paddle::Movement::NONE);
+    }
+    break;
+  case SDLK_s:
+    if (mLeftPaddle.isMoving(Paddle::Movement::DOWN)) {
+      mLeftPaddle.setMovement(Paddle::Movement::NONE);
+    }
+    break;
+  case SDLK_UP:
+    if (mRightPaddle.isMoving(Paddle::Movement::UP)) {
+      mRightPaddle.setMovement(Paddle::Movement::NONE);
+    }
+    break;
+  case SDLK_DOWN:
+    if (mRightPaddle.isMoving(Paddle::Movement::DOWN)) {
+      mRightPaddle.setMovement(Paddle::Movement::NONE);
+    }
+    break;
+  }
 }

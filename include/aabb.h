@@ -1,3 +1,9 @@
+/*! An Axis Aligned Bounding Box implementation for the game.
+
+    This class contains a definition for a AABB structure that is used for a 
+    fast collision detection base structure. This implementation contains only
+    2D-version of the AABB as we do not need more dimensions in our Pong game.
+ */
 #ifndef PONG_AABB_H
 #define PONG_AABB_H
 

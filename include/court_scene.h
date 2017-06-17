@@ -30,6 +30,21 @@ namespace pong
     void onExit() override;
     void onKeyDown(SDL_KeyboardEvent& event) override;
     void onKeyUp(SDL_KeyboardEvent& event) override;
+
+    const Wall& getTopWall() const  { return mTopWall; }
+          Wall& getTopWall()        { return mTopWall; }
+
+    const Wall& getBottomWall() const { return mBottomWall; }
+          Wall& getBottomWall()       { return mBottomWall; }
+
+    const CenterLine& getCenterLine() const { return mCenterLine; }
+          CenterLine& getCenterLine()       { return mCenterLine; }
+
+    const Paddle& getLeftPaddle() const { return mLeftPaddle; }
+          Paddle& getLeftPaddle()       { return mLeftPaddle; }
+
+    const Paddle& getRightPaddle() const { return mRightPaddle; }
+          Paddle& getRightPaddle()       { return mRightPaddle; }
   private:
     Game& mGame;
 

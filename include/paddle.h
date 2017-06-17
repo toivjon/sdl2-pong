@@ -2,9 +2,11 @@
 #define PONG_PADDLE_H
 
 #include <SDL.h>
+#include <aabb.h>
 
 namespace pong
 {
+  class CourtScene;
   class Paddle
   {
   public:
@@ -18,7 +20,7 @@ namespace pong
       DOWN  =  1
     };
 
-    Paddle(int x, int y, int width, int height);
+    Paddle(CourtScene& scene, int x, int y, int width, int height);
 
     void onDraw(SDL_Renderer& renderer);
     void onUpdate();
@@ -26,9 +28,14 @@ namespace pong
     void setMovement(Movement movement) { mMovement = movement; }
 
     bool isMoving(Movement movement) const { return mMovement == movement;  }
+
+    const AABB& getAabb() const { return mAabb; }
+          AABB& getAabb()       { return mAabb; }
   private:
-    SDL_Rect mRect;
-    Movement mMovement;
+    CourtScene& mScene;
+    SDL_Rect    mRect;
+    Movement    mMovement;
+    AABB        mAabb;
   };
 }
 

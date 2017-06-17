@@ -1,6 +1,7 @@
 #ifndef PONG_COURT_SCENE_H
 #define PONG_COURT_SCENE_H
 
+#include "ball.h"
 #include "center_line.h"
 #include "paddle.h"
 #include "wall.h"
@@ -53,6 +54,7 @@ namespace pong
     CenterLine  mCenterLine;
     Paddle      mLeftPaddle;
     Paddle      mRightPaddle;
+    Ball        mBall;
   };
 }
 

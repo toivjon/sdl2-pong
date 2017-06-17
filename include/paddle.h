@@ -2,7 +2,8 @@
 #define PONG_PADDLE_H
 
 #include <SDL.h>
-#include <aabb.h>
+
+#include "aabb.h"
 
 namespace pong
 {

@@ -1,3 +1,8 @@
+/*! The ball entity that contains definitions for the game ball.
+
+    This class presents the ball entity used in the court scene. Ball is an
+    entity that goes around the scene by bouncing from the other entities.
+ */
 #ifndef PONG_BALL_H
 #define PONG_BALL_H
 

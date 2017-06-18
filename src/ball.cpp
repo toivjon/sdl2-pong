@@ -26,9 +26,7 @@ Ball::Ball(CourtScene& scene, int x, int y, int width, int height)
 
 void Ball::onDraw(SDL_Renderer& renderer)
 {
-  SDL_SetRenderDrawColor(&renderer, 0x00, 0xff, 0x00, 0xff);
   SDL_RenderFillRect(&renderer, &mRect);
-  SDL_SetRenderDrawColor(&renderer, 0xff, 0xff, 0xff, 0xff);
 }
 
 void Ball::onUpdate()

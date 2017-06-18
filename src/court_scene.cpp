@@ -8,6 +8,9 @@
 
 using namespace pong;
 
+// The amount of pause ticks to wait at start or after a goal.
+#define PAUSE_TICKS 30
+
 CourtScene::CourtScene(Game& game) 
   : mGame(game),
     mTopWall(0, 0, game.getResolution()[0], BOX_WIDTH),
@@ -19,7 +22,8 @@ CourtScene::CourtScene(Game& game)
     mLeftGoal(-1000, 0, 1000 - BOX_WIDTH, game.getResolution()[1]),
     mRightGoal(game.getResolution()[0] + BOX_WIDTH, 0, 1000, game.getResolution()[1]),
     mLeftScoreIndicator(game.getHalfResolution()[0] - (70 + (game.getResolution()[0] / 10)), game.getResolution()[1] / 10, game.getResolution()[0] / 10, game.getResolution()[1] / 6),
-    mRightScoreIndicator(game.getHalfResolution()[0] + 70, game.getResolution()[1] / 10, game.getResolution()[0] / 10, game.getResolution()[1] / 6)
+    mRightScoreIndicator(game.getHalfResolution()[0] + 70, game.getResolution()[1] / 10, game.getResolution()[0] / 10, game.getResolution()[1] / 6),
+    mRemainingPauseTicks(PAUSE_TICKS)
 {
 	// TODO ...
 }
@@ -43,9 +47,13 @@ void CourtScene::onDraw(SDL_Renderer& renderer)
 
 void CourtScene::onUpdate()
 {
-  mLeftPaddle.onUpdate();
-  mRightPaddle.onUpdate();
-  mBall.onUpdate();
+  if (mRemainingPauseTicks <= 0) {
+    mLeftPaddle.onUpdate();
+    mRightPaddle.onUpdate();
+    mBall.onUpdate();
+  } else {
+    mRemainingPauseTicks--;
+  }
 }
 
 void CourtScene::onEnter()
@@ -117,7 +125,7 @@ void CourtScene::addPlayerScore(int playerIndex)
   } else {
     mRightScoreIndicator.setValue(scores[playerIndex]);
   }
-  // TODO add pause ticks before proceeding.
+  mRemainingPauseTicks = PAUSE_TICKS;
   if (scores[playerIndex] > 9) {
     // TODO when end game scene is implemented. mGame.setScene();
   }

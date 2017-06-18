@@ -75,6 +75,7 @@ namespace pong
     Goal            mRightGoal;
     ScoreIndicator  mLeftScoreIndicator;
     ScoreIndicator  mRightScoreIndicator;
+    int             mRemainingPauseTicks;
   };
 }
 

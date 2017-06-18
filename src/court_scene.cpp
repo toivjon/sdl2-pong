@@ -48,6 +48,10 @@ void CourtScene::onEnter()
 {
   // seed the random with the time.
   srand(time(nullptr));
+
+  // clear the player scores.
+  mGame.getPlayerScores()[0] = 0;
+  mGame.getPlayerScores()[1] = 0;
 }
 
 void CourtScene::onExit()
@@ -102,10 +106,11 @@ void CourtScene::onKeyUp(SDL_KeyboardEvent& event)
 void CourtScene::addPlayerScore(int playerIndex)
 {
   resetEntities();
-  mScores[playerIndex]++;
+  auto& scores = mGame.getPlayerScores();
+  scores[playerIndex] = scores[playerIndex] % 10;
   // TODO implement and change score indicator value.
   // TODO add pause ticks before proceeding.
-  if (mScores[playerIndex] > 9) {
+  if (scores[playerIndex] > 9) {
     // TODO when end game scene is implemented. mGame.setScene();
   }
 }

@@ -44,6 +44,9 @@ namespace pong
 
     /* Get the half-resolution (in a 2d-array) of the game canvas. */
     const std::array<int, 2>& getHalfResolution() const { return mHalfResolution; }
+
+    /* Get a reference to the player scores via a 2d-array. */
+    std::array<int, 2>& getPlayerScores() { return mPlayerScores; }
   private:
     SDL_Window*        mWindow;
     SDL_Renderer*      mRenderer;
@@ -51,6 +54,7 @@ namespace pong
     ScenePtr           mScene;
     std::array<int, 2> mResolution;
     std::array<int, 2> mHalfResolution;
+    std::array<int, 2> mPlayerScores;
   };
 }
 

@@ -16,7 +16,8 @@ Game::Game()
     mRenderer(nullptr),
     mFont(nullptr),
     mResolution({ 800, 600 }),
-    mHalfResolution({ mResolution[0] / 2, mResolution[1] / 2 })
+    mHalfResolution({ mResolution[0] / 2, mResolution[1] / 2 }),
+    mPlayerScores({0, 0})
 {
   // ...
 }

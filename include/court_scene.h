@@ -72,8 +72,6 @@ namespace pong
     Ball        mBall;
     Goal        mLeftGoal;
     Goal        mRightGoal;
-
-    std::array<int, 2> mScores;
   };
 }
 

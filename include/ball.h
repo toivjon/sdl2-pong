@@ -32,6 +32,8 @@ namespace pong
     void setX(int x) { mRect.x = x; mAabb.setCenterX(x + mAabb.getExtentX()); }
     void setY(int y) { mRect.y = y; mAabb.setCenterY(y + mAabb.getExtentY()); }
 
+    void setDirection(const std::array<float, 2>& direction) { mDirection = direction; }
+
     const AABB& getAabb() const { return mAabb; }
           AABB& getAabb()       { return mAabb; }
   private:

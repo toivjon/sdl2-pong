@@ -3,6 +3,8 @@
 #include "wall.h"
 
 #include <SDL.h>
+#include <time.h>
+#include <stdlib.h>
 
 using namespace pong;
 
@@ -47,7 +49,8 @@ void CourtScene::onUpdate()
 
 void CourtScene::onEnter()
 {
-  // TODO ...
+  // seed the random with the time.
+  srand(time(nullptr));
 }
 
 void CourtScene::onExit()
@@ -120,7 +123,14 @@ void CourtScene::resetEntities()
   mBall.setX(halfResolution[0] - ballAabb.getExtentX());
   mBall.setY(halfResolution[1] - ballAabb.getExtentY());
   
-  // TODO randomize ball direction.
+  // randomize the ball direction.
+  int random = rand() % 4;
+  switch (random) {
+  case 0: mBall.setDirection({  0.5f,  0.5f }); break;
+  case 1: mBall.setDirection({  0.5f, -0.5f }); break;
+  case 2: mBall.setDirection({ -0.5f,  0.5f }); break;
+  case 3: mBall.setDirection({ -0.5f, -0.5f }); break;
+  }
 
   // place the paddles back into the initial positions.
   const auto& paddleAabb = mLeftPaddle.getAabb();

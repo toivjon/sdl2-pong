@@ -7,6 +7,7 @@
 #include "paddle.h"
 #include "wall.h"
 #include "scene.h"
+#include "score_indicator.h"
 
 #include <array>
 
@@ -64,14 +65,16 @@ namespace pong
   private:
     Game& mGame;
 
-    Wall        mTopWall;
-    Wall        mBottomWall;
-    CenterLine  mCenterLine;
-    Paddle      mLeftPaddle;
-    Paddle      mRightPaddle;
-    Ball        mBall;
-    Goal        mLeftGoal;
-    Goal        mRightGoal;
+    Wall            mTopWall;
+    Wall            mBottomWall;
+    CenterLine      mCenterLine;
+    Paddle          mLeftPaddle;
+    Paddle          mRightPaddle;
+    Ball            mBall;
+    Goal            mLeftGoal;
+    Goal            mRightGoal;
+    ScoreIndicator  mLeftScoreIndicator;
+    ScoreIndicator  mRightScoreIndicator;
   };
 }
 

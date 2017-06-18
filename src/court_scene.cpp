@@ -17,7 +17,9 @@ CourtScene::CourtScene(Game& game)
     mRightPaddle(*this, game.getResolution()[0] - EDGE_OFFSET - BOX_WIDTH, (game.getResolution()[1] /2) - (PADDLE_HEIGHT/2), BOX_WIDTH, PADDLE_HEIGHT),
     mBall(*this, game.getResolution()[0] /2 - (BOX_WIDTH/2), game.getResolution()[1] /2 - (BOX_WIDTH/2), BOX_WIDTH, BOX_WIDTH),
     mLeftGoal(-1000, 0, 1000 - BOX_WIDTH, game.getResolution()[1]),
-    mRightGoal(game.getResolution()[0] + BOX_WIDTH, 0, 1000, game.getResolution()[1])
+    mRightGoal(game.getResolution()[0] + BOX_WIDTH, 0, 1000, game.getResolution()[1]),
+    mLeftScoreIndicator(game.getHalfResolution()[0] - (70 + (game.getResolution()[0] / 10)), game.getResolution()[1] / 10, game.getResolution()[0] / 10, game.getResolution()[1] / 6),
+    mRightScoreIndicator(game.getHalfResolution()[0] + 70, game.getResolution()[1] / 10, game.getResolution()[0] / 10, game.getResolution()[1] / 6)
 {
 	// TODO ...
 }
@@ -35,6 +37,8 @@ void CourtScene::onDraw(SDL_Renderer& renderer)
   mLeftPaddle.onDraw(renderer);
   mRightPaddle.onDraw(renderer);
   mBall.onDraw(renderer);
+  mLeftScoreIndicator.onDraw(renderer);
+  mRightScoreIndicator.onDraw(renderer);
 }
 
 void CourtScene::onUpdate()
@@ -107,8 +111,12 @@ void CourtScene::addPlayerScore(int playerIndex)
 {
   resetEntities();
   auto& scores = mGame.getPlayerScores();
-  scores[playerIndex] = scores[playerIndex] % 10;
-  // TODO implement and change score indicator value.
+  scores[playerIndex] = (scores[playerIndex] + 1) % 10;
+  if (playerIndex == 0) {
+    mLeftScoreIndicator.setValue(scores[playerIndex]);
+  } else {
+    mRightScoreIndicator.setValue(scores[playerIndex]);
+  }
   // TODO add pause ticks before proceeding.
   if (scores[playerIndex] > 9) {
     // TODO when end game scene is implemented. mGame.setScene();

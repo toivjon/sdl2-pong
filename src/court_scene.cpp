@@ -1,4 +1,5 @@
 #include "court_scene.h"
+#include "endgame_scene.h"
 #include "game.h"
 #include "wall.h"
 
@@ -119,7 +120,7 @@ void CourtScene::addPlayerScore(int playerIndex)
 {
   resetEntities();
   auto& scores = mGame.getPlayerScores();
-  scores[playerIndex] = (scores[playerIndex] + 1) % 10;
+  scores[playerIndex]++;
   if (playerIndex == 0) {
     mLeftScoreIndicator.setValue(scores[playerIndex]);
   } else {
@@ -127,7 +128,7 @@ void CourtScene::addPlayerScore(int playerIndex)
   }
   mRemainingPauseTicks = PAUSE_TICKS;
   if (scores[playerIndex] > 9) {
-    // TODO when end game scene is implemented. mGame.setScene();
+    mGame.setScene(std::make_shared<EndgameScene>(mGame));
   }
 }
 

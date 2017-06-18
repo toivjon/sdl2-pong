@@ -8,19 +8,16 @@
 
 using namespace pong;
 
-#define RESOLUTION_WIDTH 800
-#define RESOLUTION_HEIGHT 600
-
 CourtScene::CourtScene(Game& game) 
   : mGame(game),
-    mTopWall(0, 0, RESOLUTION_WIDTH, BOX_WIDTH),
-    mBottomWall(0, (RESOLUTION_HEIGHT - BOX_WIDTH), RESOLUTION_WIDTH, BOX_WIDTH),
-    mCenterLine((RESOLUTION_WIDTH/2) - BOX_WIDTH/2, BOX_WIDTH, BOX_WIDTH, RESOLUTION_HEIGHT),
-    mLeftPaddle(*this, EDGE_OFFSET, (RESOLUTION_HEIGHT/2) - (PADDLE_HEIGHT/2), BOX_WIDTH, PADDLE_HEIGHT),
-    mRightPaddle(*this, RESOLUTION_WIDTH - EDGE_OFFSET - BOX_WIDTH, (RESOLUTION_HEIGHT/2) - (PADDLE_HEIGHT/2), BOX_WIDTH, PADDLE_HEIGHT),
-    mBall(*this, RESOLUTION_WIDTH/2 - (BOX_WIDTH/2), RESOLUTION_HEIGHT/2 - (BOX_WIDTH/2), BOX_WIDTH, BOX_WIDTH),
-    mLeftGoal(-1000, 0, 1000 - BOX_WIDTH, RESOLUTION_HEIGHT),
-    mRightGoal(RESOLUTION_WIDTH + BOX_WIDTH, 0, 1000, RESOLUTION_HEIGHT)
+    mTopWall(0, 0, game.getResolution()[0], BOX_WIDTH),
+    mBottomWall(0, (game.getResolution()[1] - BOX_WIDTH), game.getResolution()[0], BOX_WIDTH),
+    mCenterLine((game.getResolution()[0] /2) - BOX_WIDTH/2, BOX_WIDTH, BOX_WIDTH, game.getResolution()[1]),
+    mLeftPaddle(*this, EDGE_OFFSET, (game.getResolution()[1] /2) - (PADDLE_HEIGHT/2), BOX_WIDTH, PADDLE_HEIGHT),
+    mRightPaddle(*this, game.getResolution()[0] - EDGE_OFFSET - BOX_WIDTH, (game.getResolution()[1] /2) - (PADDLE_HEIGHT/2), BOX_WIDTH, PADDLE_HEIGHT),
+    mBall(*this, game.getResolution()[0] /2 - (BOX_WIDTH/2), game.getResolution()[1] /2 - (BOX_WIDTH/2), BOX_WIDTH, BOX_WIDTH),
+    mLeftGoal(-1000, 0, 1000 - BOX_WIDTH, game.getResolution()[1]),
+    mRightGoal(game.getResolution()[0] + BOX_WIDTH, 0, 1000, game.getResolution()[1])
 {
 	// TODO ...
 }

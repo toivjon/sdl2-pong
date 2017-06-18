@@ -6,10 +6,10 @@
 #ifndef PONG_BALL_H
 #define PONG_BALL_H
 
+#include "aabb.h"
+
 #include <array>
 #include <SDL.h>
-
-#include "aabb.h"
 
 namespace pong
 {
@@ -28,6 +28,9 @@ namespace pong
 
     void onDraw(SDL_Renderer& renderer);
     void onUpdate();
+
+    void setX(int x) { mRect.x = x; mAabb.setCenterX(x + mAabb.getExtentX()); }
+    void setY(int y) { mRect.y = y; mAabb.setCenterY(y + mAabb.getExtentY()); }
 
     const AABB& getAabb() const { return mAabb; }
           AABB& getAabb()       { return mAabb; }

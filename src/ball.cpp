@@ -51,6 +51,8 @@ void Ball::onUpdate()
   const auto& topWallAabb = mScene.getTopWall().getAabb();
   const auto& leftPaddleAabb = mScene.getLeftPaddle().getAabb();
   const auto& rightPaddleAabb = mScene.getRightPaddle().getAabb();
+  const auto& leftGoalAabb = mScene.getLeftGoal().getAabb();
+  const auto& rightGoalAabb = mScene.getRightGoal().getAabb();
 
   if (mAabb.collides(bottomWallAabb)) {
     // prevent the ball from moving through the wall.
@@ -106,7 +108,9 @@ void Ball::onUpdate()
     // increase the velocity if possible.
     mVelocity += VELOCITY_INCREASE;
     mVelocity = std::min(mVelocity, MAX_VELOCITY);
+  } else if (mAabb.collides(rightGoalAabb)) {
+    mScene.addPlayerScore(0);
+  } else if (mAabb.collides(leftGoalAabb)) {
+    mScene.addPlayerScore(1);
   }
-
-  // ... goals?
 }

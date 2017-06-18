@@ -11,7 +11,12 @@
 
 using namespace pong;
 
-Game::Game() : mWindow(nullptr), mRenderer(nullptr), mFont(nullptr)
+Game::Game() 
+  : mWindow(nullptr),
+    mRenderer(nullptr),
+    mFont(nullptr),
+    mResolution({ 800, 600 }),
+    mHalfResolution({ mResolution[0] / 2, mResolution[1] / 2 })
 {
   // ...
 }
@@ -39,7 +44,7 @@ void Game::start()
   }
 
   // try to create a new window for the application.
-  mWindow = SDL_CreateWindow("SDL2 - Pong", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
+  mWindow = SDL_CreateWindow("SDL2 - Pong", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, mResolution[0], mResolution[1], SDL_WINDOW_SHOWN);
   if (mWindow == nullptr) {
     std::cerr << "Unable to create SDL window: " << SDL_GetError() << std::endl;
     return;

@@ -3,9 +3,12 @@
 
 #include "ball.h"
 #include "center_line.h"
+#include "goal.h"
 #include "paddle.h"
 #include "wall.h"
 #include "scene.h"
+
+#include <array>
 
 namespace pong
 {
@@ -32,6 +35,12 @@ namespace pong
     void onKeyDown(SDL_KeyboardEvent& event) override;
     void onKeyUp(SDL_KeyboardEvent& event) override;
 
+    void addPlayerScore(int playerIndex);
+    void resetEntities();
+
+    const Game& getGame() const { return mGame; }
+          Game& getGame()       { return mGame; }
+
     const Wall& getTopWall() const  { return mTopWall; }
           Wall& getTopWall()        { return mTopWall; }
 
@@ -46,6 +55,12 @@ namespace pong
 
     const Paddle& getRightPaddle() const { return mRightPaddle; }
           Paddle& getRightPaddle()       { return mRightPaddle; }
+
+    const Goal& getLeftGoal() const { return mLeftGoal; }
+          Goal& getLeftGoal()       { return mLeftGoal; }
+
+    const Goal& getRightGoal() const  { return mRightGoal; }
+          Goal& getRightGoal()        { return mRightGoal; }
   private:
     Game& mGame;
 
@@ -55,6 +70,10 @@ namespace pong
     Paddle      mLeftPaddle;
     Paddle      mRightPaddle;
     Ball        mBall;
+    Goal        mLeftGoal;
+    Goal        mRightGoal;
+
+    std::array<int, 2> mScores;
   };
 }
 

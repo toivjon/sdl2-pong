@@ -16,7 +16,9 @@ CourtScene::CourtScene(Game& game)
     mCenterLine((RESOLUTION_WIDTH/2) - BOX_WIDTH/2, BOX_WIDTH, BOX_WIDTH, RESOLUTION_HEIGHT),
     mLeftPaddle(*this, EDGE_OFFSET, (RESOLUTION_HEIGHT/2) - (PADDLE_HEIGHT/2), BOX_WIDTH, PADDLE_HEIGHT),
     mRightPaddle(*this, RESOLUTION_WIDTH - EDGE_OFFSET - BOX_WIDTH, (RESOLUTION_HEIGHT/2) - (PADDLE_HEIGHT/2), BOX_WIDTH, PADDLE_HEIGHT),
-    mBall(*this, RESOLUTION_WIDTH/2 - (BOX_WIDTH/2), RESOLUTION_HEIGHT/2 - (BOX_WIDTH/2), BOX_WIDTH, BOX_WIDTH)
+    mBall(*this, RESOLUTION_WIDTH/2 - (BOX_WIDTH/2), RESOLUTION_HEIGHT/2 - (BOX_WIDTH/2), BOX_WIDTH, BOX_WIDTH),
+    mLeftGoal(-1000, 0, 1000 - BOX_WIDTH, RESOLUTION_HEIGHT),
+    mRightGoal(RESOLUTION_WIDTH + BOX_WIDTH, 0, 1000, RESOLUTION_HEIGHT)
 {
 	// TODO ...
 }
@@ -95,4 +97,33 @@ void CourtScene::onKeyUp(SDL_KeyboardEvent& event)
     }
     break;
   }
+}
+
+void CourtScene::addPlayerScore(int playerIndex)
+{
+  resetEntities();
+  mScores[playerIndex]++;
+  // TODO implement and change score indicator value.
+  // TODO add pause ticks before proceeding.
+  if (mScores[playerIndex] > 9) {
+    // TODO when end game scene is implemented. mGame.setScene();
+  }
+}
+
+void CourtScene::resetEntities()
+{
+  // get a reference to screen half-resolution values.
+  const auto& halfResolution = mGame.getHalfResolution();
+  
+  // place the ball back into the middle of the screen.
+  const auto& ballAabb = mBall.getAabb();
+  mBall.setX(halfResolution[0] - ballAabb.getExtentX());
+  mBall.setY(halfResolution[1] - ballAabb.getExtentY());
+  
+  // TODO randomize ball direction.
+
+  // place the paddles back into the initial positions.
+  const auto& paddleAabb = mLeftPaddle.getAabb();
+  mLeftPaddle.setY(halfResolution[1] - paddleAabb.getExtentY());
+  mRightPaddle.setY(halfResolution[1] - paddleAabb.getExtentY());
 }

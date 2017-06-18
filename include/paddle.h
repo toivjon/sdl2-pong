@@ -30,6 +30,9 @@ namespace pong
 
     bool isMoving(Movement movement) const { return mMovement == movement;  }
 
+    void setX(int x) { mRect.x = x; mAabb.setCenterX(x + mAabb.getExtentX()); }
+    void setY(int y) { mRect.y = y; mAabb.setCenterY(y + mAabb.getExtentY()); }
+
     const AABB& getAabb() const { return mAabb; }
           AABB& getAabb()       { return mAabb; }
   private:

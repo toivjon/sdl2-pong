@@ -10,6 +10,7 @@
 
 #include "scene.h"
 
+#include <array>
 #include <string>
 
 // SDL forward declarations.
@@ -37,11 +38,19 @@ namespace pong
     void setScene(ScenePtr scene);
 
     SDL_Texture* createText(const std::string& text);
+
+    /* Get the resolution (in a 2d-array) of the game canvas. */
+    const std::array<int, 2>& getResolution() const { return mResolution; }
+
+    /* Get the half-resolution (in a 2d-array) of the game canvas. */
+    const std::array<int, 2>& getHalfResolution() const { return mHalfResolution; }
   private:
-    SDL_Window*     mWindow;
-    SDL_Renderer*   mRenderer;
-    _TTF_Font*      mFont;
-    ScenePtr        mScene;
+    SDL_Window*        mWindow;
+    SDL_Renderer*      mRenderer;
+    _TTF_Font*         mFont;
+    ScenePtr           mScene;
+    std::array<int, 2> mResolution;
+    std::array<int, 2> mHalfResolution;
   };
 }
 

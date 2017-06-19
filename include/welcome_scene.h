@@ -1,3 +1,9 @@
+/** The welcome scene for the application.
+
+    This scene contains the welcoming text along with the instructions about
+    how to play the game. Instructions will show the controls used to control
+    the paddles and a guide how to start the game (i.e. goto into court scene).
+ */
 #ifndef PONG_WELCOME_SCENE_H
 #define PONG_WELCOME_SCENE_H
 

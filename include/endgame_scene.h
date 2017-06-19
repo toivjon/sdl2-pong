@@ -1,3 +1,9 @@
+/*! The end game scene for the application.
+
+    This class contains the implementation for the "end game" scene for the
+    game. It shows the overall results of the game to the players and is being
+    shown after a match in the court scene has been ended.
+ */
 #ifndef PONG_ENDGAME_SCENE_H
 #define PONG_ENDGAME_SCENE_H
 

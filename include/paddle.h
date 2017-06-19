@@ -1,3 +1,9 @@
+/*! A paddle definition and implementation for a Pong game.
+
+    This class contains the necessary definitions and logics for a single game
+    paddle instance that is used in the court scene. Paddles act as a player
+    avatars that can be controlled in a response for player inputs.
+ */
 #ifndef PONG_PADDLE_H
 #define PONG_PADDLE_H
 

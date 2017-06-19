@@ -1,3 +1,10 @@
+/*! The court scene for the application.
+
+    This class contains the definitions and the implementation for the court 
+    scene for the Pong game. Court scene is the scene where the actual gameplay
+    takes presence. It contains the definitions for the ball, paddles, goals
+    and other entities that are required to play the Pong game.
+ */
 #ifndef PONG_COURT_SCENE_H
 #define PONG_COURT_SCENE_H
 

@@ -32,7 +32,7 @@ void Ball::onDraw(SDL_Renderer& renderer)
 void Ball::onUpdate()
 {
   // create an array which contains the movement.
-  auto movement = std::array<float, 2>();
+  auto movement = std::array<int, 2>();
   movement[0] = (mDirection[0] * mVelocity);
   movement[1] = (mDirection[1] * mVelocity);
 

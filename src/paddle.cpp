@@ -5,7 +5,7 @@
 
 using namespace pong;
 
-const float Paddle::VELOCITY = 8.f;
+const int Paddle::VELOCITY = 8;
 
 Paddle::Paddle(CourtScene& scene, int x, int y, int width, int height)
   : mScene(scene),
@@ -32,7 +32,7 @@ void Paddle::onUpdate()
 {
   // update paddle position only if the paddle is moving.
   if (mMovement != Movement::NONE) {
-    auto movement = ((int) mMovement) * VELOCITY;
+    auto movement = (int)mMovement * VELOCITY;
     mRect.y += movement;
     mAabb.setCenterY(mAabb.getCenterY() + movement);
     if (mMovement == Movement::UP) {

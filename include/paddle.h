@@ -18,7 +18,7 @@ namespace pong
   {
   public:
     /*! The movement velocity for the paddle. */
-    static const float VELOCITY;
+    static const int VELOCITY;
 
     /*! Enumeration for possible paddle movement directions. */
     enum class Movement : int {

@@ -60,7 +60,7 @@ void CourtScene::onUpdate()
 void CourtScene::onEnter()
 {
   // seed the random with the time.
-  srand(time(nullptr));
+  srand(static_cast<unsigned int>(time(nullptr)));
 
   // clear the player scores.
   mGame.getPlayerScores()[0] = 0;

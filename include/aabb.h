@@ -7,6 +7,8 @@
 #ifndef PONG_AABB_H
 #define PONG_AABB_H
 
+#include <array>
+
 namespace pong
 {
   class AABB final
@@ -16,20 +18,24 @@ namespace pong
 
     bool collides(const AABB& other) const;
 
-    int getCenterX() const { return mCenterX; }
-    int getCenterY() const { return mCenterY; }
-    int getExtentX() const { return mExtentX; }
-    int getExtentY() const { return mExtentY; }
+    const std::array<int, 2>& getCenter() const { return mCenter; }
+    const std::array<int, 2>& getExtent() const { return mExtent; }
 
-    void setCenterX(int x) { mCenterX = x; }
-    void setCenterY(int y) { mCenterY = y; }
-    void setExtentX(int x) { mExtentX = x; }
-    void setExtentY(int y) { mExtentY = y; }
+    void setCenter(const std::array<int, 2>& center) { mCenter = center; }
+    void setExtent(const std::array<int, 2>& extent) { mExtent = extent; }
+
+    int getCenterX() const { return mCenter[0]; }
+    int getCenterY() const { return mCenter[1]; }
+    int getExtentX() const { return mExtent[0]; }
+    int getExtentY() const { return mExtent[1]; }
+
+    void setCenterX(int x) { mCenter[0] = x; }
+    void setCenterY(int y) { mCenter[1] = y; }
+    void setExtentX(int x) { mExtent[0] = x; }
+    void setExtentY(int y) { mExtent[1] = y; }
   private:
-    int mCenterX;
-    int mCenterY;
-    int mExtentX;
-    int mExtentY;
+    std::array<int, 2> mCenter;
+    std::array<int, 2> mExtent;
   };
 }
 

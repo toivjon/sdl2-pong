@@ -4,14 +4,14 @@
 
 using namespace pong;
 
-AABB::AABB() : mCenterX(0), mCenterY(0), mExtentX(0), mExtentY(0)
+AABB::AABB() : mCenter({ 0, 0 }), mExtent({ 0, 0 })
 {
   // ...
 }
 
 bool AABB::collides(const AABB& other) const
 {
-  auto x = std::abs(mCenterX - other.mCenterX) < (mExtentX + other.mExtentX);
-  auto y = std::abs(mCenterY - other.mCenterY) < (mExtentY + other.mExtentY);
+  auto x = std::abs(mCenter[0] - other.mCenter[0]) < (mExtent[0] + other.mExtent[0]);
+  auto y = std::abs(mCenter[1] - other.mCenter[1]) < (mExtent[1] + other.mExtent[1]);
   return x && y;
 }

@@ -26,12 +26,12 @@ CourtScene::CourtScene(Game& game)
     mRightScoreIndicator(game.getHalfResolution()[0] + 70, game.getResolution()[1] / 10, game.getResolution()[0] / 10, game.getResolution()[1] / 6),
     mRemainingPauseTicks(PAUSE_TICKS)
 {
-	// TODO ...
+	// ...
 }
 
 CourtScene::~CourtScene()
 {
-  // TODO ...
+  // ...
 }
 
 void CourtScene::onDraw(SDL_Renderer& renderer)
@@ -150,6 +150,9 @@ void CourtScene::resetEntities()
   case 2: mBall.setDirection({ -0.5f,  0.5f }); break;
   case 3: mBall.setDirection({ -0.5f, -0.5f }); break;
   }
+
+  // reset the ball velocity back to initial velocity.
+  mBall.setVelocity(Ball::INITIAL_VELOCITY);
 
   // place the paddles back into the initial positions.
   const auto& paddleAabb = mLeftPaddle.getAabb();

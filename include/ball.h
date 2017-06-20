@@ -34,6 +34,8 @@ namespace pong
 
     void setDirection(const std::array<float, 2>& direction) { mDirection = direction; }
 
+    void setVelocity(float velocity) { mVelocity = velocity; }
+
     const AABB& getAabb() const { return mAabb; }
           AABB& getAabb()       { return mAabb; }
   private:

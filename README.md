@@ -3,6 +3,8 @@ A SDL2 implementation of the classic Pong game.
 
 Contains a single mode where two human players can play against each other.
 
+Development blog entry: https://toivjon.wordpress.com/2017/06/20/sdl2-pong/
+
 ## Scenes
 Game is split into following scenes:
 1. A welcome scene, which contains the main menu.
